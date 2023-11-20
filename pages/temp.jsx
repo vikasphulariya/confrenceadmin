@@ -115,10 +115,10 @@ const MyForm = () => {
   };
   return (
     <div className="flex flex-col w-full  justify-center  items-center pb-10">
-      <label className="text-black text-lg font-bold ">Cheif's</label>
+      <label className="text-black text-lg font-bold ">Cheif&apos;s</label>
       <DynamicForm data={formData} setData={setFormData} itemName="chiefs" />
       <label className="text-black text-lg font-bold">
-        Technical Program Chair's
+        Technical Program Chair&apos;s
       </label>
 
       <DynamicForm
@@ -126,10 +126,10 @@ const MyForm = () => {
         setData={setFormData}
         itemName="technicalProgramChairs"
       />
-      <label className="text-black text-lg font-bold">Co-Patron's</label>
+      <label className="text-black text-lg font-bold">Co-Patron&apos;s</label>
 
       <DynamicForm data={formData} setData={setFormData} itemName="Co-Patron" />
-      <label className="text-black text-lg font-bold">Conference General Chair's</label>
+      <label className="text-black text-lg font-bold">Conference General Chair&apos;s</label>
 
       <DynamicForm data={formData} setData={setFormData} itemName="Conference General Chair" />
       <button
