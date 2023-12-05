@@ -7,7 +7,7 @@ import { Days_One, Inter } from "next/font/google";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
-const  firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyAslvKIwGKp9m4YFbC-NZRbmmDXwBOfJmA",
   authDomain: "confrencewebsite.firebaseapp.com",
   projectId: "confrencewebsite",
@@ -52,11 +52,11 @@ export default function UpdateContent() {
   const updateData = async (e) => {
     e.preventDefault();
     const temp = doc(db, "Website", "Data");
-    console.log(dynamicData)
+    console.log(dynamicData);
     // Use the updateDoc function to update specific fields in the document
-    await updateDoc(temp, dynamicData).then(()=>{
-      alert("Update successfull")
-    })
+    await updateDoc(temp, dynamicData).then(() => {
+      alert("Update successfull");
+    });
 
     console.log("Document updated successfully");
   };
@@ -75,21 +75,24 @@ export default function UpdateContent() {
       console.log("No such document!");
     }
   };
+  const [imagePreviews, setImagePreviews] = useState([]);
 
-  const [imagePreview, setImagePreview] = useState(null);
+  const handleFileChange = (event) => {
+    const files = event.target.files;
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
+    // Convert FileList to an array
+    const newImagePreviews = Array.from(files).map((file) =>
+      URL.createObjectURL(file)
+    );
 
-    if (file) {
-      const reader = new FileReader();
+    // Update state with the new image previews
+    setImagePreviews([...imagePreviews, ...newImagePreviews]);
+  };
 
-      reader.onload = () => {
-        setImagePreview(reader.result);
-      };
-
-      reader.readAsDataURL(file);
-    }
+  const handleRemoveImage = (index) => {
+    const updatedPreviews = [...imagePreviews];
+    updatedPreviews.splice(index, 1);
+    setImagePreviews(updatedPreviews);
   };
   return (
     <main className="flex flex-col w-full  justify-center  items-center pb-10">
@@ -180,7 +183,7 @@ export default function UpdateContent() {
                 <div className="mt-2">
                   <div className="flex mb-3 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                     <input
-                    value={dynamicData.approveLink}
+                      value={dynamicData.approveLink}
                       type="url"
                       name="approveLink"
                       onChange={handleChange}
@@ -215,7 +218,6 @@ export default function UpdateContent() {
                 <div className="mt-2">
                   <div className="flex mb-3 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                     <input
-
                       type="text"
                       name="extendedPaperSubmissionDate"
                       value={dynamicData.extendedPaperSubmissionDate}
@@ -233,7 +235,6 @@ export default function UpdateContent() {
                 <div className="mt-2">
                   <div className="flex mb-3 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                     <input
-
                       type="text"
                       name="authorNotified"
                       value={dynamicData.authorNotified}
@@ -251,7 +252,6 @@ export default function UpdateContent() {
                 <div className="mt-2">
                   <div className="flex mb-3 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                     <input
-
                       type="text"
                       name="lastDateRegistration"
                       value={dynamicData.lastDateRegistration}
@@ -269,7 +269,6 @@ export default function UpdateContent() {
                 <div className="mt-2">
                   <div className="flex mb-3 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                     <input
-
                       type="url"
                       name="RegistrationLink"
                       value={dynamicData.RegistrationLink}
@@ -279,14 +278,8 @@ export default function UpdateContent() {
                   </div>
                 </div>
 
-
-                <label
-                  htmlFor="cover-photo"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
-                  Banner photo
-                </label>
-                <div>
+             
+                {/* <div>
                   <div className=" mt-2  flex w-full justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10 sm:max-w-md">
                     <div className="text-center">
                       <div className="mt-4 flex text-sm leading-6 text-gray-600">
@@ -322,7 +315,7 @@ export default function UpdateContent() {
                       )}
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -336,7 +329,6 @@ export default function UpdateContent() {
           >
             Update
           </button>
-        
         </div>
       </form>
     </main>
