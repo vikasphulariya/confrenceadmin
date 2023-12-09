@@ -60,6 +60,7 @@ export default function Banner() {
     setImageUrls(updatedImagesurls);
     updateData(updatedImagesurls);
   };
+  
   const uploadImagesToImgBB = async () => {
     try {
       const apiKey = "101405e8c4bd3a056e79883b57b8b8f8";

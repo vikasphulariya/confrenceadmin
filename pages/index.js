@@ -10,7 +10,7 @@ import { PinData } from "./pin";
 
 export default function Home() {
   const [verifPin, setVerifPin] = useState("");
-  const [verified, setVerified] = useState(false);
+  const [verified, setVerified] = useState(true);
   const [option, setOption] = useState("Main Page");
   const data = ["Main Page", "Committee", "Contact", "Paper Submission", "Banner","Settings" ];
 
@@ -34,9 +34,9 @@ export default function Home() {
   };
 
   return (
-    <main className={`flex flex-1 h-full flex-col items-center w-full bg-white py-10 `}>
+    <main className={`flex bg-white   flex-col items-center w-full   py-10 `}>
       {verified ? (
-        <div className="flex flex-col w-full items-center flex-wrap ">
+        <div className="flex flex-col w-full  items-center flex-wrap ">
           <div className="flex flex-row">
             {data.map((item) => (
               <button
@@ -50,7 +50,7 @@ export default function Home() {
               </button>
             ))}
           </div>
-          <div className={`flex flex-col items-center justify-between w-full bg-white py-10`}>
+          <div className={`flex flex-col items-center justify-between w-full  h-full py-10`}>
             {option === "Main Page" && <UpdateContent />}
             {option === "Committee" && <MyForm />}
             {option === "Contact" && <ContactDetails />}
