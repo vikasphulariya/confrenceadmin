@@ -95,10 +95,10 @@ export default function UpdateContent() {
     setImagePreviews(updatedPreviews);
   };
   return (
-    <main className="flex flex-col w-full  justify-center  items-center pb-10">
+    <main className="flex flex-col w-full  justify-center  items-center pb-10 ">
       <form className="flex flex-col w-full  justify-center items-center  ">
-        <div className=" flex flex-col w-1/2  justify-center items-center ">
-          <div className="flex flex-col w-full  justify-center items-center">
+        <div className=" flex flex-col w-full md:w-1/2 justify-center items-center ">
+          <div className="flex flex-col w-full  justify-center items-center ">
             <div className="flex w-full   flex-col items-center gap-x-6  sm:grid-cols-6">
               <div className="w-full justify-center items-center  ">
                 <label
@@ -114,7 +114,7 @@ export default function UpdateContent() {
                       type="text"
                       name="Title"
                       onChange={handleChange}
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -145,7 +145,7 @@ export default function UpdateContent() {
                   Confrence Discription
                 </label>
                 <div className="flex w-full mt-2">
-                  <div className="flex w-full mb-3 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 ">
+                  <div className="flex w-full mb-3 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600  ">
                     <textarea
                       value={dynamicData.About}
                       name="About"
@@ -279,43 +279,7 @@ export default function UpdateContent() {
                 </div>
 
              
-                {/* <div>
-                  <div className=" mt-2  flex w-full justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10 sm:max-w-md">
-                    <div className="text-center">
-                      <div className="mt-4 flex text-sm leading-6 text-gray-600">
-                        <label
-                          htmlFor="file-upload"
-                          className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500 sm:max-w-md"
-                        >
-                          {imagePreview === null ? (
-                            <span>Upload a file</span>
-                          ) : (
-                            <span>Change Image</span>
-                          )}
-                          <input
-                            id="file-upload"
-                            name="file-upload"
-                            type="file"
-                            className="sr-only"
-                            onChange={handleFileChange}
-                          />
-                        </label>
-                      </div>
-                      <p className="text-xs leading-5 text-gray-600">
-                        PNG, JPG, GIF up to 10MB
-                      </p>
-                      {imagePreview && (
-                        <div className="mt-4 text-center">
-                          <img
-                            src={imagePreview}
-                            alt="Uploaded Preview"
-                            className="max-w-full max-h-96"
-                          />
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div> */}
+               
               </div>
             </div>
           </div>
