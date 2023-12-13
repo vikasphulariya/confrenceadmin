@@ -20,7 +20,7 @@ const db = getFirestore(app);
 export { db };
 
 
-const PinPage = () => {
+const PinPagje = () => {
   return (
     <div>
       {/* Your component logic here */}
@@ -29,4 +29,4 @@ const PinPage = () => {
   );
 };
 
-export default PinPage;
+export default PinPagje;
