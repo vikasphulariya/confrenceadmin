@@ -34,25 +34,15 @@ const inter = Inter({ subsets: ["latin"] });
 export default function CommitteData() {
   const [dynamicData, setDynamicData] = useState({ Cheifs: [] });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    // console.log(name, value);
-    setDynamicData({
-      ...dynamicData,
-      [name]: value,
-    });
-  };
-  useEffect(() => {
-    // console.log("vikas");
 
+  useEffect(() => {
     getData();
   }, []);
 
   const updateData = async (e) => {
     e.preventDefault();
-    const temp = doc(db, "Website", "Comitte");
+    const temp = doc(db, "Website", "Data");
     console.log(dynamicData);
-    // Use the updateDoc function to update specific fields in the document
     await updateDoc(temp, dynamicData).then(() => {
       alert("Update successfull");
     });
@@ -74,6 +64,8 @@ export default function CommitteData() {
       console.log("No such document!");
     }
   };
+
+  
   const handleAddChief = () => {
     setDynamicData((prevData) => ({
       Cheifs: [...prevData.Cheifs, ""],

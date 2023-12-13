@@ -35,8 +35,6 @@ export default function Banner() {
     getData();
   }, []);
 
- 
-
   const [selectedImages, setSelectedImages] = useState([]);
   const [imageUrls, setImageUrls] = useState([]);
 
@@ -60,7 +58,7 @@ export default function Banner() {
     setImageUrls(updatedImagesurls);
     updateData(updatedImagesurls);
   };
-  
+
   const uploadImagesToImgBB = async () => {
     try {
       const apiKey = "101405e8c4bd3a056e79883b57b8b8f8";
@@ -82,8 +80,8 @@ export default function Banner() {
       const newUrls = await Promise.all(uploadPromises);
 
       setImageUrls((prevUrls) => [...prevUrls, ...newUrls]);
-      let tempData=[...imageUrls,...newUrls]
-      updateData(tempData)
+      let tempData = [...imageUrls, ...newUrls];
+      updateData(tempData);
       setSelectedImages([]);
     } catch (error) {
       console.error("Error uploading images:", error);
@@ -156,7 +154,7 @@ export default function Banner() {
         onClick={uploadImagesToImgBB}
         className="bg-blue-500 text-white px-4 py-2 mt-4 rounded"
       >
-        Upload Images 
+        Upload Images
       </button>
 
       <div className="mt-4">

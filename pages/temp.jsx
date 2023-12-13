@@ -1,11 +1,11 @@
-"use client"
+"use client";
 import Image from "next/image";
 // import { db } from "./firestoreConfig";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
-const  firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyAslvKIwGKp9m4YFbC-NZRbmmDXwBOfJmA",
   authDomain: "confrencewebsite.firebaseapp.com",
   projectId: "confrencewebsite",
@@ -56,7 +56,10 @@ const DynamicForm = ({ data, setData, itemName }) => {
     <div className="flex flex-col w-full  justify-center  items-center pb-10 ">
       <form className="flex flex-col w-full  justify-center items-center  ">
         {data[itemName].map((item, index) => (
-          <div key={index} className=" flex flex-col w-1/2  justify-center items-center ">
+          <div
+            key={index}
+            className=" flex flex-col w-1/2  justify-center items-center "
+          >
             {/* <label className="text-black capitalize">{`${itemName} ${index + 1}: `}</label> */}
             <div className="mt-2 flex flex-col w-full  justify-center items-center">
               <div className="flex w-full mb-3 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
@@ -99,6 +102,13 @@ const MyForm = () => {
     technicalProgramChairs: [],
     "Co-Patron": [],
     "Conference General Chair": [],
+    "Conference Secretary": [],
+    Convenor: [],
+    "Technical Program Co-Chair": [],
+    "International Program Committee Members": [],
+    "National Program Committee Members": [],
+    "Local Organizing Coordinators": [],
+
     // Add more items as needed
   });
 
@@ -108,7 +118,7 @@ const MyForm = () => {
     getData();
   }, []);
   const getData = async () => {
-    const firebaseData = doc(db, "Website", "Comitte");
+    const firebaseData = doc(db, "Website", "Data");
 
     const docSnapshot = await getDoc(firebaseData);
 
@@ -121,13 +131,16 @@ const MyForm = () => {
       console.log("No such document!");
     }
   };
+
   const updateData = async (e) => {
     e.preventDefault();
-    const temp = doc(db, "Website", "Comitte");
+    const temp = doc(db, "Website", "Data");
+
     console.log(formData);
     // Use the updateDoc function to update specific fields in the document
     await updateDoc(temp, formData).then(() => {
       alert("Update successfull");
+      console.log(formData);
     });
 
     console.log("Document updated successfully");
@@ -136,21 +149,75 @@ const MyForm = () => {
     <div className="flex flex-col w-full  justify-center  items-center pb-10">
       <label className="text-black text-lg font-bold ">Cheif&apos;s</label>
       <DynamicForm data={formData} setData={setFormData} itemName="chiefs" />
+
       <label className="text-black text-lg font-bold">
         Technical Program Chair&apos;s
       </label>
-
       <DynamicForm
         data={formData}
         setData={setFormData}
         itemName="technicalProgramChairs"
       />
+
       <label className="text-black text-lg font-bold">Co-Patron&apos;s</label>
-
       <DynamicForm data={formData} setData={setFormData} itemName="Co-Patron" />
-      <label className="text-black text-lg font-bold">Conference General Chair&apos;s</label>
 
-      <DynamicForm data={formData} setData={setFormData} itemName="Conference General Chair" />
+      <label className="text-black text-lg font-bold">
+        Conference General Chair&apos;s
+      </label>
+      <DynamicForm
+        data={formData}
+        setData={setFormData}
+        itemName="Conference General Chair"
+      />
+
+      <label className="text-black text-lg font-bold">
+        Conference Secretary&apos;s
+      </label>
+      <DynamicForm
+        data={formData}
+        setData={setFormData}
+        itemName="Conference Secretary"
+      />
+
+      <label className="text-black text-lg font-bold">Convenor&apos;s</label>
+      <DynamicForm data={formData} setData={setFormData} itemName="Convenor" />
+
+      <label className="text-black text-lg font-bold">
+        Technical Program Co-Chair&apos;s
+      </label>
+      <DynamicForm
+        data={formData}
+        setData={setFormData}
+        itemName="Technical Program Co-Chair"
+      />
+
+      <label className="text-black text-lg font-bold">
+        International Program Committee Member&apos;s
+      </label>
+      <DynamicForm
+        data={formData}
+        setData={setFormData}
+        itemName="International Program Committee Members"
+      />
+
+      <label className="text-black text-lg font-bold">
+        National Program Committee Member&apos;s
+      </label>
+      <DynamicForm
+        data={formData}
+        setData={setFormData}
+        itemName="National Program Committee Members"
+      />
+
+      <label className="text-black text-lg font-bold">
+        Local Organizing Coordinator&apos;s
+      </label>
+      <DynamicForm
+        data={formData}
+        setData={setFormData}
+        itemName="Local Organizing Coordinators"
+      />
       <button
         onClick={(e) => {
           updateData(e);

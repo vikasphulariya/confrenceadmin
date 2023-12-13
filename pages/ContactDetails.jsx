@@ -5,7 +5,7 @@ import { Days_One, Inter } from "next/font/google";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
-const  firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyAslvKIwGKp9m4YFbC-NZRbmmDXwBOfJmA",
   authDomain: "confrencewebsite.firebaseapp.com",
   projectId: "confrencewebsite",
@@ -49,7 +49,7 @@ function ContactDetails() {
 
   const updateData = async (e) => {
     e.preventDefault();
-    const temp = doc(db, "Website", "Contact");
+    const temp = doc(db, "Website", "Data");
     console.log(dynamicData);
     // Use the updateDoc function to update specific fields in the document
     await updateDoc(temp, dynamicData).then(() => {
@@ -60,7 +60,7 @@ function ContactDetails() {
   };
 
   const getData = async () => {
-    const firebaseData = doc(db, "Website", "Contact");
+    const firebaseData = doc(db, "Website", "Data");
 
     const docSnapshot = await getDoc(firebaseData);
 
@@ -80,10 +80,21 @@ function ContactDetails() {
           <div className="flex flex-col w-full  justify-center items-center">
             <div className="flex w-full   flex-col items-center gap-x-6  sm:grid-cols-6">
               <div className="w-full justify-center items-center  ">
-                <label
-                  htmlFor="username"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
+                <label className="block text-sm font-medium leading-6 text-gray-900">
+                  Institute Name
+                </label>
+                <div className="mt-2">
+                  <div className="flex mb-3 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                    <input
+                      value={dynamicData.InstituteName}
+                      type="text"
+                      name="InstituteName"
+                      onChange={handleChange}
+                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
+                <label className="block text-sm font-medium leading-6 text-gray-900">
                   Phone No
                 </label>
                 <div className="mt-2">
@@ -97,10 +108,7 @@ function ContactDetails() {
                     />
                   </div>
                 </div>
-                <label
-                  htmlFor="username"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
+                <label className="block text-sm font-medium leading-6 text-gray-900">
                   Email
                 </label>
                 <div className="mt-2">
@@ -115,10 +123,7 @@ function ContactDetails() {
                     />
                   </div>
                 </div>
-                <label
-                  htmlFor="username"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
+                <label className="block text-sm font-medium leading-6 text-gray-900">
                   Address
                 </label>
                 <div className="mt-2">

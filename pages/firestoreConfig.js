@@ -18,3 +18,15 @@ const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
 const db = getFirestore(app);
 export { db };
+
+
+const PinPage = () => {
+  return (
+    <div>
+      {/* Your component logic here */}
+      <p>Pin: {PinData.pin}</p>
+    </div>
+  );
+};
+
+export default PinPage;

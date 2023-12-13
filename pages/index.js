@@ -10,7 +10,7 @@ import { PinData } from "./pin";
 
 export default function Home() {
   const [verifPin, setVerifPin] = useState("");
-  const [verified, setVerified] = useState(true);
+  const [verified, setVerified] = useState(false);
   const [option, setOption] = useState("Main Page");
   const data = ["Main Page", "Committee", "Contact", "Paper Submission", "Banner","Settings" ];
 
