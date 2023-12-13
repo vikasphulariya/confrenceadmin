@@ -24,7 +24,7 @@ const PinPagje = () => {
   return (
     <div>
       {/* Your component logic here */}
-      <p>Pin: {PinData.pin}</p>
+      <p>Pin: </p>
     </div>
   );
 };
